@@ -49,7 +49,7 @@ public class TaskControllerTest {
 		//todo.setDueDate(LocalDate.now());
 		try {
 			controller.save(todo);
-			Assert.fail("Não deveria ter chegado a essa ponto!");
+			Assert.fail("Não deveria chegar a esse ponto!");
 		} catch (ValidationException e) {
 			Assert.assertEquals("Fill the due date", e.getMessage());
 		}
