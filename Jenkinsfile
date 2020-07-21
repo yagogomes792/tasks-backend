@@ -66,4 +66,15 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            junit allowEmptyResults: true, testResults: '/target/surefire-reports, /api-test/target/surefire-reports, /functional-test/target/surefire-reports'
+        }
+        unsuccessful {
+            emailext attachLog: true, body: 'The pipeline has failed!', subject: 'pipeline #BUILD_NUMBER', to: 'yago.792@hotmail.com'
+        }
+        fixed {
+            emailext attachLog: true, body: 'The pipeline has been fixed!', subject: 'pipeline #BUILD_NUMBER', to: 'yago.792@hotmail.com'
+        }
+    }
 }
